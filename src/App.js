@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+  // const state = useState();
+  //for Get Time Button Section
+  let newTime = new Date().toLocaleTimeString();
+  const [ctime, setCtime] = useState(newTime);
+
+  const UpdateTime = () => {
+    let newcTime = new Date().toLocaleTimeString();;
+    setCtime(newcTime);
+  };
+
+  //for Digital Clock Section 
+  let time = new Date().toLocaleTimeString();
+  const [dtime, setDtime] = useState(time);
+  const DigitalTime = () => {
+    time = new Date().toLocaleTimeString();;
+    setDtime(time);
+  };
+  setInterval(DigitalTime,1000);
+
+   return(
+    <div className='screen'>
+    <div className='digClk'>
+    <p style={{color: 'red'}}>Digital Clock</p>
+    <h1>{dtime}</h1>
+    </div>
+    <h1>{ctime}</h1>
+    <button onClick={UpdateTime}>Get Time</button>
     </div>
   );
 }
